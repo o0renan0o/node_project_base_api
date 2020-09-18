@@ -1,0 +1,20 @@
+{
+  "name": "node_project_base_api",
+  "version": "1.0.0",
+  "description": "Base api to start other projects",
+  "main": "server.ts",
+  "repository": "https://github.com/o0renan0o/node_project_base_api.git",
+  "author": "Renan <renan-soares@live.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpileOnly --ignore-watch --no-notify node_modules src/server.ts"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.8",
+    "ts-node-dev": "^1.0.0-pre.62",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
