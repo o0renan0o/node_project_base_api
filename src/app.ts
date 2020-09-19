@@ -1,21 +1,24 @@
 import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
-import morgan from "morgan";
+import morgan from 'morgan';
+import user_controller from '@controllers/user'
 
 class App {
-    public express: express.Application
+    public app: express.Application
+    private Router;
 
     public constructor() {
-        this.express = express()
-
+        this.app = express()
+        this.Router = express.Router()
         App.dataBase()
-        this.middlewares()
+        this.middleware()
         this.routes()
     }
 
-    private middlewares(): void {
-        this.express
+    private middleware(): void {
+        this.app
+            .use(this.Router)
             .use(express.json())
             .use(cors())
             .use(express.urlencoded({extended: false}))
@@ -30,10 +33,18 @@ class App {
     }
 
     private routes(): void {
-        this.express.get('/', (req, res) => {
-            res.json({message: "Hi !"})
-        })
+        this.Router
+            .get('/user/:user_id', (req, res, next) => user_controller.get_one(req, res, next))
+            .get('/users', (req, res, next) =>  user_controller.list_all(req, res, next))
+            .post('/user', (req, res, next) =>  user_controller.sign_up(req, res, next))
+            .delete('/user/:user_id', (req, res, next) =>  user_controller.unsubscribe(req, res, next))
+
+        this.Router
+            .get('/product/:product_id', (req, res, next) => user_controller.get_one(req, res, next))
+            .get('/products', (req, res, next) =>  user_controller.list_all(req, res, next))
+            .post('/product', (req, res, next) =>  user_controller.sign_up(req, res, next))
+            .delete('/product/product_id', (req, res, next) =>  user_controller.unsubscribe(req, res, next))
     }
 }
 
-export default new App().express;
+export default new App().app;

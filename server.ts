@@ -5,7 +5,7 @@ import app from './src/app';
 import * as Http from 'http'
 import Debug from "debug";
 
-let debug: Debug.Debugger = Debug("foo")
+let debug: Debug.Debugger = Debug("Server")
 
 
 let port = normalizePort(process.env.PORT || 5000);

@@ -7,7 +7,7 @@
   "author": "Renan <renan-soares@live.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "set DEBUG=foo & yarn ts-node-dev -r tsconfig-paths/register --transpile-only --respawn --ignore-watch node_modules --no-notify server.ts"
+    "dev": "set DEBUG=Server & yarn ts-node-dev -r tsconfig-paths/register --transpile-only --respawn --ignore-watch node_modules --no-notify server.ts"
   },
   "devDependencies": {
     "@types/debug": "^4.1.5",
@@ -19,11 +19,14 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "debug-log": "^2.0.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "http": "^0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.6",
     "morgan": "^1.10.0"
   }
