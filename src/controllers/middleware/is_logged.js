@@ -3,7 +3,7 @@ const
     //admins = require('../database/models/administradores'),
     //router = express.Router(),
     mongooseFind = require('../database/robot/crud_user/find'),
-    //mongoose = require("mongoose"),
+    mongoose = require("mongoose"),
     //cookies = require('cookie-parser'),
     jwt = require('jsonwebtoken');
 

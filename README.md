@@ -7,6 +7,8 @@ Base project to build new API servers with typescript.
 * Cors
 * Morgan
 * Jest
+* Bcrypt
+* Jsonwebtoken
 
 ### Architecture Pattern
 * Controller

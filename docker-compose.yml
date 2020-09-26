@@ -1,0 +1,18 @@
+version: "1"
+services:
+  node:
+    image: "node:12"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./node_project_base_api/src/:/home/node/app
+    ports:
+      - 5000:5000
+    command: bash -c "set DEBUG=Server & yarn ts-node-dev -r tsconfig-paths/register --transpile-only --respawn --ignore-watch node_modules --no-notify server.ts"
+    depends_on: 
+      - mongo
+    #environment:
+    #  MONGO_INITDB_ROOT_USERNAME: renan-soares@live.com
+    #  MONGO_INITDB_ROOT_PASSWORD: sonda-bcbk

@@ -3,6 +3,7 @@ import cors from 'cors'
 import mongoose from 'mongoose'
 import morgan from 'morgan';
 import user_controller from '@controllers/user'
+import products_controller from '@controllers/products'
 
 class App {
     public app: express.Application
@@ -11,6 +12,7 @@ class App {
     public constructor() {
         this.app = express()
         this.Router = express.Router()
+
         App.dataBase()
         this.middleware()
         this.routes()
@@ -40,10 +42,10 @@ class App {
             .delete('/user/:user_id', (req, res, next) =>  user_controller.unsubscribe(req, res, next))
 
         this.Router
-            .get('/product/:product_id', (req, res, next) => user_controller.get_one(req, res, next))
-            .get('/products', (req, res, next) =>  user_controller.list_all(req, res, next))
-            .post('/product', (req, res, next) =>  user_controller.sign_up(req, res, next))
-            .delete('/product/product_id', (req, res, next) =>  user_controller.unsubscribe(req, res, next))
+            .get('/product/:product_id', (req, res, next) => products_controller.get_one(req, res, next))
+            .get('/products', (req, res, next) =>  products_controller.list_all(req, res, next))
+            .post('/product', (req, res, next) =>  products_controller.sign_up(req, res, next))
+            .delete('/product/product_id', (req, res, next) =>  products_controller.unsubscribe(req, res, next))
     }
 }
 
